@@ -12,7 +12,7 @@ const SIGNUP_FORM_URL = "";
 
 // 2. Replace with the real contact email (also update the two
 //    mailto/placeholder spots in index.html flagged with TODO).
-const CONTACT_EMAIL = "hello@example.com";
+const CONTACT_EMAIL = "contact@christinelucaspiano.com?Subject=UMT%20Club%20Request";
 // ============================================================
 
 document.documentElement.classList.add("js");
