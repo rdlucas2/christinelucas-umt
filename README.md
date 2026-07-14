@@ -36,14 +36,15 @@ Search `index.html` for `TODO` to find each spot.
 
 - [ ] **Sign-up form URL** — paste the Google Form link into `SIGNUP_FORM_URL`
       at the top of `js/main.js`. All CTAs switch over automatically.
-- [ ] **Contact email** — set `CONTACT_EMAIL` in `js/main.js` AND replace the
-      `hello@example.com` mailto in the `#signup` section of `index.html`
-      (the HTML fallback for no-JS visitors).
-- [ ] **Tuition** — replace the `$TBD` pricing placeholder in the `#pricing`
-      section with real numbers.
-- [ ] **Instructor bio + photo** — replace the placeholder bio text and the
-      photo placeholder in the `#teacher` section (drop the photo into
-      `assets/`).
+- [x] **Contact email** — done (`contact@christinelucaspiano.com`).
+- [x] **Tuition** — done ($144/month or $36/hour).
+- [x] **Instructor bio + photo** — done.
+- [ ] **GA4 Measurement ID** — paste into `window.GA_MEASUREMENT_ID` in
+      `index.html`, then mark `sign_up_click` and `email_click` as key events.
+      Full steps: `docs/google-setup.md`.
+- [ ] **Google Ads IDs** — paste the `AW-…` tag ID into `window.GOOGLE_ADS_ID`
+      in `index.html` and the `AW-…/label` into `GOOGLE_ADS_SEND_TO` in
+      `js/main.js`. Do not launch campaigns before the sign-up form is live.
 - [ ] **Workbook purchase links** — replace the generic UMT shop link in the
       `#materials` section with per-level links if desired.
 - [ ] **Schedule details** — confirm the AM/PM assumptions (site currently
@@ -53,4 +54,5 @@ Search `index.html` for `TODO` to find each spot.
       (e.g. mention UMT Certified teacher status if applicable).
 - [ ] **Domain** — once the final URL is known (custom domain or
       `*.github.io`), add a `<link rel="canonical">` and `og:url` to
-      `index.html`; consider adding a social-share image (`og:image`).
+      `index.html`, update the GA4 stream URL and Ads final URLs; consider
+      adding a social-share image (`og:image`).

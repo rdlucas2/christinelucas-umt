@@ -14,6 +14,31 @@
   <meta property="og:title" content="Ultimate Music Theory Club">
   <meta property="og:description" content="Live, small-group music theory classes for adults and homeschoolers — virtual, hybrid, and in person near Pittsburgh.">
   <meta property="og:type" content="website">
+
+  <!-- Google tag (gtag.js) for Google Analytics 4 + Google Ads.
+       Setup steps: see docs/google-setup.md. Nothing loads until the IDs below
+       are filled in, so this is safe to ship as-is. -->
+  <script>
+    // TODO: paste the GA4 Measurement ID from Admin → Data streams (looks like "G-ABC123XYZ")
+    window.GA_MEASUREMENT_ID = "";
+    // TODO (later): paste the Google Ads tag ID (looks like "AW-123456789") once the
+    // conversion action exists — see docs/google-setup.md step 2 of the Ads section.
+    window.GOOGLE_ADS_ID = "";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    if (window.GA_MEASUREMENT_ID) {
+      var gtagScript = document.createElement("script");
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(gtagScript);
+      gtag("js", new Date());
+      gtag("config", window.GA_MEASUREMENT_ID);
+      if (window.GOOGLE_ADS_ID) {
+        gtag("config", window.GOOGLE_ADS_ID);
+      }
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +70,7 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow">2026–27 school year · Registration opening soon</p>
@@ -368,12 +393,7 @@
       <div class="container">
         <div class="teacher-grid reveal">
           <div class="teacher-photo">
-            <div class="photo-placeholder" role="img" aria-label="Photo of the instructor coming soon">
-              <span aria-hidden="true">♪</span>
-              <p>
-                <image src="assets/christine.jpg" width="50%" alt="A picture of Christine Lucas"></image>
-              </p>
-            </div>
+            <img src="assets/christine.jpg" alt="Christine Lucas, pianist and teacher">
           </div>
           <div class="teacher-copy">
             <p class="eyebrow">Meet your teacher</p>
@@ -540,7 +560,7 @@
         Glory St. Germain. This site is operated by an independent teacher offering
         classes based on the UMT curriculum.
       </p>
-      <p class="footer-fine">© 2026 Ultimate Music Theory Club</p>
+      <p class="footer-fine">© 2026 Ultimate Music Theory Club · <a href="privacy.html">Privacy policy</a></p>
     </div>
   </footer>
 
