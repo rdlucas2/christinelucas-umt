@@ -1,4 +1,4 @@
-/* Ultimate Music Theory Club — progressive enhancement.
+/* Theory Made Fun (theorymadefun.com) — progressive enhancement.
    The site is fully usable with JavaScript disabled. */
 
 // ============================================================
