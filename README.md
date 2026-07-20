@@ -1,8 +1,8 @@
-# Ultimate Music Theory Club — website
+# Theory Made Fun — theorymadefun.com
 
-Conversion-focused static site for UMT Club: live, small-group Ultimate Music
-Theory classes for adults and homeschoolers (virtual on Muzie.live, hybrid, and
-in person at PYCO School of Music, Wexford, PA).
+Conversion-focused static site for Theory Made Fun: live, small-group Ultimate
+Music Theory classes for adults and homeschoolers (virtual on Muzie.live,
+hybrid, and in person at PYCO School of Music, Wexford, PA).
 
 Plain HTML/CSS with a small amount of vanilla JavaScript (progressive
 enhancement only — the site works fully with JS disabled). No frameworks, no
@@ -52,7 +52,14 @@ Search `index.html` for `TODO` to find each spot.
       Eastern time zone note, and add the year start date when known.
 - [ ] **Trademark/affiliation wording** — confirm the footer disclaimer
       (e.g. mention UMT Certified teacher status if applicable).
-- [ ] **Domain** — once the final URL is known (custom domain or
-      `*.github.io`), add a `<link rel="canonical">` and `og:url` to
-      `index.html`, update the GA4 stream URL and Ads final URLs; consider
-      adding a social-share image (`og:image`).
+- [ ] **Domain cutover to theorymadefun.com** — canonical/`og:url` tags are
+      done. Remaining steps:
+      1. DNS at the registrar: apex `A` records to GitHub Pages
+         (185.199.108.153 / .109. / .110. / .111.) and a `www` CNAME to
+         `rdlucas2.github.io`.
+      2. GitHub → Settings → Pages → Custom domain: `theorymadefun.com`
+         (this commits a `CNAME` file to `gh-pages`); tick **Enforce HTTPS**
+         once the certificate is issued.
+      3. Update the GA4 data stream URL and (later) Google Ads final URLs
+         to `https://theorymadefun.com`.
+      4. Consider a social-share image (`og:image`).

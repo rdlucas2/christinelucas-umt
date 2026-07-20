@@ -31,8 +31,9 @@ means key events imported into Google Ads.
 
 1. Go to [analytics.google.com](https://analytics.google.com) → Admin (gear) →
    **Create → Property**. Name it "UMT Club website", set the US timezone/currency.
-2. Add a **Web** data stream with URL `https://rdlucas2.github.io` (update this
-   later when the custom domain exists). Leave **Enhanced measurement** on.
+2. Add a **Web** data stream with URL `https://theorymadefun.com` (or
+   `https://rdlucas2.github.io` until the domain cutover — the stream URL is
+   informational and easy to update later). Leave **Enhanced measurement** on.
 3. Copy the **Measurement ID** (`G-…`) shown on the stream page and paste it into
    `window.GA_MEASUREMENT_ID` in `index.html`. Deploy.
 4. Admin → Data display → **Key events** → *New key event* → create two, by exact
@@ -88,7 +89,10 @@ your budget buys nothing.
 10. Review search-terms report weekly for the first month; prune junk terms and
     move winners to exact match.
 
-## When the custom domain arrives
-- GA4: Admin → Data streams → update the stream URL.
-- Google Ads: update campaign final URLs.
-- Site: add `<link rel="canonical">` and `og:url` in `index.html`.
+## Domain cutover (theorymadefun.com)
+The site's canonical/`og:url` tags already point at `https://theorymadefun.com/`.
+When flipping DNS (steps in the README launch checklist):
+- GA4: Admin → Data streams → update the stream URL to `https://theorymadefun.com`.
+- Google Ads: use `https://theorymadefun.com` in campaign final URLs.
+- GitHub Pages 301-redirects `rdlucas2.github.io/christinelucas-umt` to the
+  custom domain automatically once it's configured, so old links keep working.
