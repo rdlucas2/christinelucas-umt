@@ -8,7 +8,7 @@
 //    "Join the Club" button switches from the #signup anchor to
 //    the form automatically, and the "coming soon" pill becomes
 //    a live "Sign up now" button.
-const SIGNUP_FORM_URL = "";
+const SIGNUP_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfFb0HRrOUCjrk6uq9a8BszyhcQ1eq3xC1x34UlC-mGR8pYGQ/viewform?fbzx=48631426688837265";
 
 // 2. Replace with the real contact email (also update the two
 //    mailto/placeholder spots in index.html flagged with TODO).
