@@ -13,6 +13,12 @@ const SIGNUP_FORM_URL = "";
 // 2. Replace with the real contact email (also update the two
 //    mailto/placeholder spots in index.html flagged with TODO).
 const CONTACT_EMAIL = "contact@christinelucaspiano.com?Subject=UMT%20Club%20Request";
+
+// 3. Google Ads conversion for sign-up clicks. Paste the value from
+//    the conversion action's "send_to" (looks like "AW-123456789/AbC-DEfGhIJk").
+//    Requires window.GOOGLE_ADS_ID to be set in index.html too.
+//    See docs/google-setup.md.
+const GOOGLE_ADS_SEND_TO = "";
 // ============================================================
 
 document.documentElement.classList.add("js");
@@ -46,6 +52,47 @@ if (SIGNUP_FORM_URL) {
 // --- Email links --------------------------------------------
 document.querySelectorAll("[data-email-link]").forEach((link) => {
   link.href = "mailto:" + CONTACT_EMAIL;
+});
+
+// --- Analytics ----------------------------------------------
+// Events flow to GA4 through the Google tag configured in index.html.
+// gtag is always defined there, and calls are harmless no-ops until a
+// real Measurement ID is pasted in — so this code is safe to ship early.
+function track(eventName, params) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params || {});
+  }
+}
+
+// Where on the page a click came from (nearest ancestor with an id,
+// e.g. "pricing", "signup", "top" for the header nav).
+function linkLocation(el) {
+  const withId = el.closest("[id]");
+  return (withId && withId.id) || "page";
+}
+
+// Sign-up CTAs. While the Google Form is still pending, CTAs point at the
+// #signup anchor and we record "sign_up_intent" (baseline interest). Once
+// SIGNUP_FORM_URL is live they lead to the real form and we record
+// "sign_up_click" — the key event / Google Ads conversion.
+document.querySelectorAll("[data-signup-link], [data-signup-form]").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (SIGNUP_FORM_URL) {
+      track("sign_up_click", { link_location: linkLocation(link) });
+      if (GOOGLE_ADS_SEND_TO && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", { send_to: GOOGLE_ADS_SEND_TO });
+      }
+    } else {
+      track("sign_up_intent", { link_location: linkLocation(link) });
+    }
+  });
+});
+
+// Contact email clicks (secondary key event).
+document.querySelectorAll("[data-email-link]").forEach((link) => {
+  link.addEventListener("click", () => {
+    track("email_click", { link_location: linkLocation(link) });
+  });
 });
 
 // --- Mobile nav ---------------------------------------------
