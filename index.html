@@ -14,6 +14,31 @@
   <meta property="og:title" content="Ultimate Music Theory Club">
   <meta property="og:description" content="Live, small-group music theory classes for adults and homeschoolers — virtual, hybrid, and in person near Pittsburgh.">
   <meta property="og:type" content="website">
+
+  <!-- Google tag (gtag.js) for Google Analytics 4 + Google Ads.
+       Setup steps: see docs/google-setup.md. Nothing loads until the IDs below
+       are filled in, so this is safe to ship as-is. -->
+  <script>
+    // TODO: paste the GA4 Measurement ID from Admin → Data streams (looks like "G-ABC123XYZ")
+    window.GA_MEASUREMENT_ID = "";
+    // TODO (later): paste the Google Ads tag ID (looks like "AW-123456789") once the
+    // conversion action exists — see docs/google-setup.md step 2 of the Ads section.
+    window.GOOGLE_ADS_ID = "";
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    if (window.GA_MEASUREMENT_ID) {
+      var gtagScript = document.createElement("script");
+      gtagScript.async = true;
+      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(gtagScript);
+      gtag("js", new Date());
+      gtag("config", window.GA_MEASUREMENT_ID);
+      if (window.GOOGLE_ADS_ID) {
+        gtag("config", window.GOOGLE_ADS_ID);
+      }
+    }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -45,7 +70,7 @@
   <main id="main">
 
     <!-- ============ HERO ============ -->
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
           <p class="eyebrow">2026–27 school year · Registration opening soon</p>
@@ -69,7 +94,7 @@
         <div class="hero-visual" aria-hidden="true">
           <div class="hero-card hero-card-1">
             <span class="badge badge-virtual">Virtual</span>
-            <p>Live on Muzie.live, from your couch</p>
+            <p>Live on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a>, from your couch</p>
           </div>
           <div class="hero-card hero-card-2">
             <span class="badge badge-hybrid">Hybrid</span>
@@ -93,10 +118,10 @@
           <p class="eyebrow">The method</p>
           <h2>What is Ultimate Music Theory?</h2>
           <p class="section-lead">
-            Ultimate Music Theory (UMT) is a proven system that maximizes learning by
-            engaging all three learning modalities (visual, auditory, & kinesthetic). Thoughtfully sequenced workbooks,
-            paired with games and peer-group fun, make theory enjoyable — and applicable
-            to the music you actually play.
+            Ultimate Music Theory (UMT) is a proven system to maximize learning which engages 
+            the 3 main learning modalities (visual, auditory, & kinesthetic). 
+            Thoughtfully sequenced texts paired with games and peer-group 
+            fun make learning theory fun and applicable!
           </p>
         </div>
         <div class="card-grid three reveal">
@@ -147,7 +172,7 @@
               <li>Parents of young musicians who want to support their children's growth</li>
               <li>Community band members</li>
               <li>Longtime musicians</li>
-              <li>Musicians who play by ear — and those who only read</li>
+              <li>Musicians who play by ear as well as those who only read!</li>
               <li>Anyone just beginning their musical journey</li>
             </ul>
           </article>
@@ -155,7 +180,7 @@
             <h3>Homeschoolers</h3>
             <ul class="check-list" role="list">
               <li>Current course offerings are appropriate for ages 10 and up</li>
-              <li>UMT originated in Canada and is compatible with the Royal Conservatory of Music (RCM) theory curriculum</li>
+              <li>UMT originated in Canada and is compatible with the Royal Conservatory of Music (ABRSM) theory curriculum</li>
               <li>Daytime sections fit naturally into a homeschool week</li>
               <li>Class replays make catching up after a busy week easy</li>
             </ul>
@@ -174,33 +199,24 @@
           <p class="eyebrow">The formats</p>
           <h2>How does it work?</h2>
           <p class="section-lead">
-            Every level runs as 36 hour-long weekly classes across the school year,
-            culminating in a final exam. Pick the format that fits your life:
+            Each level is designed to be taught over 36 hourlong classes, culminating in a final exam at the end of the year:
           </p>
         </div>
         <div class="card-grid three reveal">
           <article class="card format-card">
             <span class="badge badge-virtual">Virtual</span>
-            <h3>Live online, made for musicians</h3>
-            <p>Classes meet on <strong>Muzie.live</strong> — like Zoom, but with audio
-               configured for musicians and all shared materials kept in one easy place.
-               Classes are recorded, so if you're absent you can catch the replay.
-               No commute, maximum schedule flexibility.</p>
+            <h3>VIRTUAL CLASSES</h3>
+            <p>All classes will be available via <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a>. It’s similar to Zoom, but the audio is ideally configured for musicians and it allows teachers to keep materials/media they’ve shared available to students in one easy location. <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> also allows classes to be recorded and saved to be accessed at a later time in the case of a student absence. Virtual classes also maximize student schedule flexibility, eliminating the drive to and from classes.</p>
           </article>
           <article class="card format-card">
             <span class="badge badge-hybrid">Hybrid</span>
-            <h3>The best of both worlds</h3>
-            <p>One section meets in a hybrid format a few times a year — at no extra
-               charge — for special themed classes and live games at
-               <strong>PYCO School of Music</strong>. Can't make it in person? No worries:
-               we'll still be on Muzie, interacting and sharing the fun.</p>
+            <h3>HYBRID IN-PERSON/VIRTUAL</h3>
+            <p>One section will be offered in a hybrid format a few times throughout the year - at no extra charge! We’ll meet at PYCO School of Music to have a special themed class and live games. Can’t attend in-person? No worries - we’ll still be on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> and able to interact and share the fun! </p>
           </article>
           <article class="card format-card">
             <span class="badge badge-inperson">In person</span>
-            <h3>Around the table, every week</h3>
-            <p>One section runs in person weekly at <strong>PYCO School of Music</strong>
-               in Wexford, PA. Absent students can always catch up via class replays
-               on Muzie.</p>
+            <h3>IN-PERSON</h3>
+            <p>One section will run in person weekly at PYCO School of Music. Absent students will have the option to catch up via class replays on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a>. </p>
           </article>
         </div>
       </div>
@@ -212,55 +228,29 @@
         <div class="section-head reveal">
           <p class="eyebrow">Find your fit</p>
           <h2>Which level is right for me?</h2>
-          <p class="section-lead">
-            If you've never read music or are just starting an instrument, you're a
-            <strong>beginner</strong> — start with Prep 1. If you study with a private
-            teacher, they can tell you whether you've progressed to intermediate or
-            advanced status.
-          </p>
+            <ul class="dot-list" role="list">
+              <li>If you’ve never read music or are just starting to study an instrument, you’d be considered a beginner.</li>
+              <li>If you have a private teacher, they will be able to tell you if you’ve progressed to intermediate or advanced status.</li>
+              <li>If you’d like to send me the titles of your lesson books and/or a PDF of the music you’ve been playing, I’d be happy to help you find your best fit!</li>
+            </ul>
         </div>
         <div class="card-grid three reveal">
           <article class="card level-card">
             <p class="level-tag">Beginner</p>
             <h3>Prep 1 Rudiments</h3>
-            <p class="level-blurb">Perfect for beginning music readers.</p>
-            <ul class="dot-list" role="list">
-              <li>The music alphabet</li>
-              <li>Reading on the treble and bass staves</li>
-              <li>Rhythmic notation, including duple 8th notes</li>
-              <li>Simple meters</li>
-              <li>Intervals up to the octave</li>
-              <li>Major/minor triads and pentascales</li>
-            </ul>
+            <p class="level-blurb">Perfect for beginning music readers. Covers the music alphabet, reading on the treble and bass staves, rhythmic notation including duple 8th notes, simple meters, intervals up to the octave, and major/minor triads and pentascales.</p>
             <p class="level-times"><strong>2026–27 sections:</strong> Mon 2:00 (virtual), Tue 11:00 (hybrid), Tue 3:00 (virtual), Tue 5:30 (in person)</p>
           </article>
           <article class="card level-card">
             <p class="level-tag">Early intermediate</p>
             <h3>Prep 2 Rudiments</h3>
-            <p class="level-blurb">Great for early intermediate players.</p>
-            <ul class="dot-list" role="list">
-              <li>The music alphabet and both staves</li>
-              <li>Rhythmic notation, including triplet 8th notes</li>
-              <li>Simple meters</li>
-              <li>Intervals up to the octave</li>
-              <li>Major &amp; relative minor scales; circle of 5ths up to 2 sharps/flats</li>
-              <li>Major/minor triads</li>
-            </ul>
+            <p class="level-blurb">Great for early intermediate players! Covers the music alphabet, reading on the treble and bass staves, rhythmic notation including triplet 8th notes, simple meters, intervals up to the octave, major & relative minor scales and the circle of 5ths up to 2 sharps and flats, and major/minor triads.</p>
             <p class="level-times"><strong>2026–27 sections:</strong> Mon 3:00 (virtual), Tue 2:00 (virtual)</p>
           </article>
           <article class="card level-card">
-            <p class="level-tag">Experienced · ≈ RCM Theory Level 5</p>
+            <p class="level-tag">Experienced (RCM Theory Level 5)</p>
             <h3>Basic Rudiments</h3>
-            <p class="level-blurb">For experienced music readers comfortable in at least one
-               clef and playing at a late intermediate level.</p>
-            <ul class="dot-list" role="list">
-              <li>Major &amp; relative minor scales; circle of 5ths up to 4 sharps/flats</li>
-              <li>All major and minor intervals up to the octave</li>
-              <li>Major and minor triads</li>
-              <li>Harmonic analysis with tonic (I/i), subdominant (IV/iv), and dominant (V)</li>
-              <li>Simple meters: duple, triple, and quadruple</li>
-              <li>Rhythmic notation, including triplet 16th notes</li>
-            </ul>
+            <p class="level-blurb">Designed for the experienced music reader who is already comfortable reading and playing at least one clef, and playing at least at a late intermediate level. Covers major & relative minor scales and the circle of 5ths up to 4 sharps and flats, all major and minor intervals up to the octave, major and minor triads, harmonic analysis using the tonic (I/i), subdominant (IV/iv) and dominant (V), simple meters (duple, triple, and quadruple), rhythmic notation including triplet sixteenth notes. Comparable to RCM Theory Level 5.</p>
             <p class="level-times"><strong>2026–27 sections:</strong> Tue 1:00 (virtual)</p>
           </article>
         </div>
@@ -350,10 +340,10 @@
           <h2>Simple, all-inclusive tuition</h2>
         </div>
         <div class="pricing-card reveal">
-          <p class="price"><span class="price-amount">$144</span> <span class="price-period">/ month</span> OR <span class="price-amount">$36</span> <span class="price-period">/ hour</span></p>
+          <p class="price"><span class="price-amount">$144</span> <span class="price-period">/ month</span></p>
           <ul class="check-list" role="list">
             <li>36 live, hour-long weekly classes</li>
-            <li>Class replays on Muzie.live whenever you miss a week</li>
+            <li>Class replays on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> whenever you miss a week</li>
             <li>Games, group activities, and themed hybrid events at no extra charge</li>
             <li>Year-end final exam and progress feedback</li>
           </ul>
@@ -368,15 +358,10 @@
       <div class="container">
         <div class="teacher-grid reveal">
           <div class="teacher-photo">
-            <div class="photo-placeholder" role="img" aria-label="Photo of the instructor coming soon">
-              <span aria-hidden="true">♪</span>
-              <p>
-                <image src="assets/christine.jpg" width="50%" alt="A picture of Christine Lucas"></image>
-              </p>
-            </div>
+            <img src="assets/christine.jpg" alt="Christine Lucas, pianist and teacher">
           </div>
           <div class="teacher-copy">
-            <p class="eyebrow">Meet your teacher</p>
+            <p class="eyebrow">Meet the teacher!</p>
             <h2>Christine Lucas</h2>
             <p>
               Christine Lucas is a pianist who currently wears many different musical hats: private piano teacher, music history professor, pit orchestra director, accompanist, church musician, and competition chair.
@@ -404,6 +389,13 @@
               books or a PDF of the music you've been playing, and I'll help you find your
               best fit.
             </p>
+            <hr/>
+            <h2>Testimonial:</h2>
+            <p>
+              Christine Lucas is the best in the business! After working with her for several years, we've seen remarkable growth in our child. She is not only kind and caring but also fully invested in her students’ learning. Christine tailors her teaching to each child's level and maturity and encourages families to be involved in the lessons. She also creates fun learning experiences for her students. Our favorite was the silent movie sound track recital! Her creativity and warmth are what sets her apart. She strikes the perfect balance between challenge and support, and we're so grateful to have found her!
+              <br/>-Leah Kalan
+
+            </p>
             <a class="btn btn-ghost" data-email-link href="#signup">Say hello&nbsp;→</a>
           </div>
         </div>
@@ -424,8 +416,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14Z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>
             </div>
             <h3>Your UMT workbook</h3>
-            <p>A physical copy of the workbook for your level. It's your textbook, your
-               practice space, and your keepsake of the year.</p>
+            <p>We’ll be using the Ultimate Music Theory workbook series. Each student will need a physical copy of the workbook.</p>
             <!-- TODO: replace with the preferred purchase links per level (UMT shop and/or Amazon) -->
             <p class="material-links">
               Buy yours: <a href="https://shop.ultimatemusictheory.com/" rel="noopener">Ultimate Music Theory Shop</a>
@@ -436,7 +427,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5a10 10 0 0 1 14 0"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M2 9a14.5 14.5 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg>
             </div>
             <h3>A stable internet connection</h3>
-            <p>Classes stream live on Muzie.live — all you need is a computer or tablet
+            <p>Classes stream live on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> — all you need is a computer or tablet
                with a browser, a camera, and a mic.</p>
           </article>
           <article class="card material-card">
@@ -460,8 +451,13 @@
         </div>
         <div class="faq-list reveal">
           <details>
+            <summary>How do I sign up?</summary>
+            <p><a class="btn btn-primary" data-signup-link href="#signup">Click Here!</a></p>
+            <p>Once your registration is processed, you will receive a mymusicstaff parent portal link. You can see our class calendar, Muzie how-to’s, student account, course policies and FAQ’s, etc. Automated invoices will be generated through mymusicstaff. Payment is due by the 1st of each month and can be made via cash (at the first class of the month), Venmo, or Zelle. $144/month billed September-May.</p>
+          </details>
+          <details>
             <summary>What if I miss a class?</summary>
-            <p>No problem. Classes are recorded on Muzie.live and saved so you can watch
+            <p>No problem. Classes are recorded on <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> and saved so you can watch
                the replay and stay on track.</p>
           </details>
           <details>
@@ -472,24 +468,19 @@
           </details>
           <details>
             <summary>What ages are the classes for?</summary>
-            <p>Current course offerings are appropriate for ages 10 and up — and adults
-               are especially welcome. Many of our students are choir members, community
+            <p>Current course offerings are appropriate for ages 10 and up. Many of our students are choir members, community
                band players, and parents of young musicians.</p>
           </details>
           <details>
-            <summary>What is Muzie.live, and what do I need to use it?</summary>
-            <p>Muzie.live is an online classroom built specifically for music education.
-               It's similar to Zoom, but the audio is ideally configured for musicians,
-               shared materials stay available in one place, and classes can be recorded
-               for replays. You just need a browser and a stable internet connection —
-               no special software.</p>
+            <summary>What is <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a>, and what do I need to use it?</summary>
+            <p>
+              NO SPECIAL SOFTWARE REQUIRED! <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> is a regular website that runs from your  internet browser.
+              There is a free app version of Muzie that might work better on certain devices. You will need to register an account.
+            </p>
           </details>
           <details>
             <summary>Is this the same as RCM theory?</summary>
-            <p>The Ultimate Music Theory workbooks align with the Royal Conservatory of
-               Music (RCM) theory curriculum. Basic Rudiments is comparable to RCM Theory
-               Level 5, so UMT Club classes are a great foundation if RCM exams are in
-               your future.</p>
+            <p>TNo, but Ultimate Music Theory was created by Canadian musicians who are very familiar with RCM & Celebrate Theory. UMT is designed to complement RCM students’ theory preparation.</p>
           </details>
           <details>
             <summary>Do I need a piano or other instrument at home?</summary>
@@ -533,14 +524,13 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-brand"><span aria-hidden="true">♪</span> Ultimate Music Theory Club</p>
-      <p>Classes online via Muzie.live and in person at PYCO School of Music, Wexford, PA.</p>
-      <!-- TODO: confirm affiliation/trademark wording (e.g. whether Christine is a UMT Certified teacher) -->
+      <p>Classes online via <a href="https://www.muzie.live/" target="_blank" rel="noopener noreferrer">Muzie.live</a> and in person at PYCO School of Music, Wexford, PA.</p>
       <p class="footer-fine">
         Ultimate Music Theory® is the workbook series and learning system created by
         Glory St. Germain. This site is operated by an independent teacher offering
         classes based on the UMT curriculum.
       </p>
-      <p class="footer-fine">© 2026 Ultimate Music Theory Club</p>
+      <p class="footer-fine">© 2026 Ultimate Music Theory Club · <a href="privacy.html">Privacy policy</a></p>
     </div>
   </footer>
 

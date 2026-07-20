@@ -970,6 +970,32 @@ ul {
   color: rgba(255, 255, 255, 0.55);
 }
 
+.site-footer a {
+  color: var(--gold);
+}
+
+/* ---------- Prose pages (privacy policy, etc.) ---------- */
+
+.prose h3 {
+  margin-top: 2rem;
+}
+
+.prose ul {
+  display: block;
+  list-style: disc;
+  padding-left: 1.4rem;
+  margin-bottom: 1em;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.page-updated {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
 /* ---------- Reveal animation (JS adds .js to <html>) ---------- */
 
 html.js .reveal {
