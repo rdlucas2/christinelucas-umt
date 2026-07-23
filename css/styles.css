@@ -426,6 +426,12 @@ ul {
   font-size: 0.95rem;
 }
 
+.hero-pdf-link {
+  margin-top: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
 .hero-ticks li::before {
   content: "✓";
   color: var(--teal);
