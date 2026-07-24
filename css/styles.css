@@ -13,6 +13,7 @@
   --plum: #46325a;
   --terracotta: #b7431b;
   --terracotta-bright: #d05a2e;
+  --terracotta-deep: #a5391a;
   --gold: #e8a93c;
   --gold-soft: #f8e3bb;
   --teal: #1f6f6f;
@@ -102,9 +103,16 @@ ul {
 }
 
 :focus-visible {
-  outline: 3px solid var(--gold);
+  outline: 3px solid var(--terracotta);
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Terracotta clears 3:1 on the light page, but not on the dark plum
+   sections — keep the high-contrast gold ring there. */
+.signup-band :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--gold);
 }
 
 [hidden] {
@@ -220,7 +228,7 @@ ul {
 
 .badge-inperson {
   background: var(--rust-soft);
-  color: var(--terracotta);
+  color: var(--terracotta-deep);
 }
 
 .eyebrow {
@@ -667,7 +675,7 @@ ul {
 }
 
 .level-blurb {
-  font-weight: 700;
+  font-weight: 400;
   color: var(--ink-soft);
 }
 
