@@ -90,7 +90,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -323,29 +323,49 @@ hr {
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
   margin-inline-end: auto;
   text-decoration: none;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  color: var(--heading);
 }
 
-.brand em {
-  font-style: normal;
-  color: var(--primary);
+/* The logo PNG has an opaque white background, so rounding its corners makes
+   it read as the wordmark on the light theme and a tidy white logo card on
+   the dark theme — no background-knockout artifacts. */
+.brand-logo {
+  display: block;
+  height: 4.5rem;
+  width: auto;
+  border-radius: 9px;
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 2.1rem;
-  height: 2.1rem;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--on-vibrant);
-  font-size: 1.2rem;
+@media (max-width: 480px) {
+  .brand-logo {
+    height: 3.1rem;
+  }
+}
+
+/* Swap the header logo per theme: white-background version on the light
+   theme, transparent (knocked-out) version on the dark theme. The footer
+   always uses the transparent version because its band is dark in both. */
+.brand-logo--dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .brand-logo--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .brand-logo--dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .brand-logo--light {
+    display: none;
+  }
+
+  :root:not([data-theme]) .brand-logo--dark {
+    display: block;
+  }
 }
 
 .site-nav ul {
@@ -640,6 +660,47 @@ hr {
   font-weight: 700;
   color: var(--text-muted);
   max-width: 44em;
+}
+
+/* ---------- Feature (image beside text) ---------- */
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  margin-bottom: 2.75rem;
+}
+
+.feature-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.feature-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Image on the right on wide screens. */
+.feature-reverse .feature-media {
+  order: 2;
+}
+
+@media (max-width: 760px) {
+  .feature {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Keep the image on top when stacked, regardless of side. */
+  .feature-media,
+  .feature-reverse .feature-media {
+    order: -1;
+  }
 }
 
 /* ---------- Cards ---------- */
@@ -1064,15 +1125,12 @@ hr {
   margin-bottom: 0.6rem;
 }
 
-.footer-brand {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--band-heading);
-}
-
-.footer-brand span {
-  color: var(--accent);
+.footer-logo {
+  display: block;
+  height: 3.6rem;
+  width: auto;
+  border-radius: 9px;
+  margin-bottom: 0.9rem;
 }
 
 .footer-fine {
