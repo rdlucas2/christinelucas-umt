@@ -114,6 +114,20 @@ if (header && navToggle) {
   });
 }
 
+// Theme toggle is handled by the inline <head> script (so it also works on
+// pages that don't load this file, and applies before first paint).
+
+const brandLink = document.querySelector(".brand");
+if (brandLink) {
+  brandLink.addEventListener("click", (event) => {
+    if (brandLink.getAttribute("href") === "#top") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      history.replaceState(null, "", "#top");
+    }
+  });
+}
+
 // --- Header shadow on scroll --------------------------------
 const onScroll = () => {
   header && header.classList.toggle("is-scrolled", window.scrollY > 4);

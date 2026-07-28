@@ -1,31 +1,83 @@
 /* ==========================================================================
    Theory Made Fun (theorymadefun.com) — styles
-   Warm & friendly: cream backgrounds, terracotta primary, plum headings.
+   Vibrant palette (yellow → green → teal → blue) with light + dark themes.
+
+   Theming model (see js + inline <head> script):
+   - Semantic tokens only. The 5 vibrant palette colors are used as *fills*
+     paired with near-black content (--on-vibrant); text that sits on a page
+     background uses contrast-safe --text / --heading / --link instead.
+   - :root holds the light theme; [data-theme="dark"] (and the system
+     preference, when the visitor hasn't chosen) swaps in the dark values.
    No frameworks; progressive enhancement (site fully works without JS).
    ========================================================================== */
 
 :root {
-  --cream: #fdf8f1;
-  --cream-deep: #f7ecdd;
-  --white: #ffffff;
-  --ink: #453a33;
-  --ink-soft: #6b5d53;
-  --plum: #46325a;
-  --terracotta: #b7431b;
-  --terracotta-bright: #d05a2e;
-  --terracotta-deep: #a5391a;
-  --gold: #e8a93c;
-  --gold-soft: #f8e3bb;
-  --teal: #1f6f6f;
-  --teal-soft: #dff0ee;
-  --violet: #6d4b8c;
-  --violet-soft: #ede4f4;
-  --rust-soft: #fbe3d6;
-  --border: #eadfd0;
-  --shadow: 0 10px 30px -12px rgba(70, 50, 90, 0.18);
+  /* ---- Structural (theme-independent) ---- */
   --radius: 16px;
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-body: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* ---- Palette (vibrant fills — always paired with --on-vibrant) ---- */
+  --primary: #0098ce;      /* blue  — primary actions        */
+  --cat-virtual: #00c8a5;  /* teal  — "Virtual"              */
+  --cat-inperson: #23ce6b; /* green — "In person"            */
+  --cat-fun: #fbfb00;      /* yellow — "Fun!" / accent pop   */
+  --accent: #fbfb00;       /* yellow accent (fills / on dark)*/
+  --lime: #6ad700;         /* lime accent (decoration)       */
+  --on-vibrant: #08141c;   /* near-black content on any fill */
+
+  /* ---- Fixed dark bands (signup + footer, same in both themes) ---- */
+  --band-bg: #080d12;
+  --band-text: rgba(233, 242, 247, 0.82);
+  --band-heading: #ffffff;
+  --band-link: var(--accent);
+
+  /* ---- Light theme (default) ---- */
+  --bg: #f6f9fb;
+  --bg-alt: #e9f2f7;
+  --surface: #ffffff;
+  --border: #dae5ec;
+  --text: #10181d;
+  --text-muted: #4c5b66;
+  --heading: #0c2331;
+  --link: #0072a1;
+  --link-hover: #005a82;
+  --focus: #006c99;
+  --check: #0b7a49;        /* positive check marks on --bg   */
+  --shadow: 0 10px 30px -12px rgba(12, 35, 48, 0.16);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b0f13;
+  --bg-alt: #12181d;
+  --surface: #171f25;
+  --border: #2b353d;
+  --text: #e9f0f4;
+  --text-muted: #a6b3bc;
+  --heading: #f4f9fc;
+  --link: #4cbfef;
+  --link-hover: #79d2f5;
+  --focus: #4cbfef;
+  --check: #6ad700;
+  --shadow: 0 12px 34px -14px rgba(0, 0, 0, 0.65);
+}
+
+/* Follow the OS preference until the visitor makes an explicit choice. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --bg: #0b0f13;
+    --bg-alt: #12181d;
+    --surface: #171f25;
+    --border: #2b353d;
+    --text: #e9f0f4;
+    --text-muted: #a6b3bc;
+    --heading: #f4f9fc;
+    --link: #4cbfef;
+    --link-hover: #79d2f5;
+    --focus: #4cbfef;
+    --check: #6ad700;
+    --shadow: 0 12px 34px -14px rgba(0, 0, 0, 0.65);
+  }
 }
 
 /* ---------- Base ---------- */
@@ -52,15 +104,15 @@ body {
   font-family: var(--font-body);
   font-size: 1.0625rem;
   line-height: 1.65;
-  color: var(--ink);
-  background: var(--cream);
+  color: var(--text);
+  background: var(--bg);
 }
 
 h1,
 h2,
 h3 {
   font-family: var(--font-display);
-  color: var(--plum);
+  color: var(--heading);
   line-height: 1.15;
   margin: 0 0 0.6em;
 }
@@ -85,11 +137,11 @@ p {
 }
 
 a {
-  color: var(--terracotta);
+  color: var(--link);
 }
 
 a:hover {
-  color: var(--terracotta-bright);
+  color: var(--link-hover);
 }
 
 img {
@@ -102,17 +154,22 @@ ul {
   padding: 0;
 }
 
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+
 :focus-visible {
-  outline: 3px solid var(--terracotta);
+  outline: 3px solid var(--focus);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Terracotta clears 3:1 on the light page, but not on the dark plum
-   sections — keep the high-contrast gold ring there. */
+/* The bands are dark in both themes — keep a bright ring there. */
 .signup-band :focus-visible,
 .site-footer :focus-visible {
-  outline-color: var(--gold);
+  outline-color: var(--accent);
 }
 
 [hidden] {
@@ -132,8 +189,8 @@ ul {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--plum);
-  color: var(--white);
+  background: var(--primary);
+  color: var(--on-vibrant);
   padding: 0.6rem 1rem;
   border-radius: 0 0 8px 0;
   z-index: 100;
@@ -161,43 +218,44 @@ ul {
 }
 
 .btn-primary {
-  background: var(--terracotta);
-  color: var(--white);
-  box-shadow: 0 6px 18px -6px rgba(183, 67, 27, 0.5);
+  background: var(--primary);
+  color: var(--on-vibrant);
+  box-shadow: 0 8px 22px -10px color-mix(in srgb, var(--primary) 60%, transparent);
 }
 
 .btn-primary:hover {
-  background: var(--terracotta-bright);
-  color: var(--white);
+  background: color-mix(in srgb, var(--primary) 88%, #ffffff);
+  color: var(--on-vibrant);
 }
 
 .btn-ghost {
-  color: var(--plum);
-  border: 2px solid var(--plum);
+  color: var(--link);
+  border: 2px solid var(--link);
   background: transparent;
 }
 
 .btn-ghost:hover {
-  background: var(--plum);
-  color: var(--white);
+  background: var(--primary);
+  color: var(--on-vibrant);
+  border-color: var(--primary);
 }
 
 .btn-light {
-  background: var(--white);
-  color: var(--terracotta);
+  background: #ffffff;
+  color: var(--on-vibrant);
 }
 
 .btn-light:hover {
-  background: var(--gold-soft);
-  color: var(--terracotta);
+  background: var(--accent);
+  color: var(--on-vibrant);
 }
 
 .btn-light.is-disabled {
-  opacity: 0.85;
+  opacity: 0.9;
   cursor: default;
-  background: rgba(255, 255, 255, 0.25);
-  color: var(--white);
-  border: 2px dashed rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.72);
+  border: 2px dashed rgba(255, 255, 255, 0.6);
 }
 
 .btn-small {
@@ -214,21 +272,19 @@ ul {
   padding: 0.25rem 0.75rem;
   border-radius: 999px;
   white-space: nowrap;
+  color: var(--on-vibrant);
 }
 
 .badge-virtual {
-  background: var(--teal-soft);
-  color: var(--teal);
+  background: var(--cat-virtual);
 }
 
 .badge-hybrid {
-  background: var(--violet-soft);
-  color: var(--violet);
+  background: var(--cat-fun);
 }
 
 .badge-inperson {
-  background: var(--rust-soft);
-  color: var(--terracotta-deep);
+  background: var(--cat-inperson);
 }
 
 .eyebrow {
@@ -236,7 +292,7 @@ ul {
   font-size: 0.85rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--terracotta);
+  color: var(--link);
   margin-bottom: 0.75rem;
 }
 
@@ -246,7 +302,7 @@ ul {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(253, 248, 241, 0.92);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -254,13 +310,12 @@ ul {
 
 .site-header.is-scrolled {
   border-bottom-color: var(--border);
-  box-shadow: 0 4px 20px -12px rgba(70, 50, 90, 0.25);
+  box-shadow: 0 4px 20px -12px rgba(0, 0, 0, 0.35);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 1rem;
   padding-block: 0.85rem;
 }
@@ -269,16 +324,17 @@ ul {
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  margin-inline-end: auto;
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.15rem;
-  color: var(--plum);
+  color: var(--heading);
 }
 
 .brand em {
   font-style: normal;
-  color: var(--terracotta);
+  color: var(--primary);
 }
 
 .brand-mark {
@@ -287,8 +343,8 @@ ul {
   width: 2.1rem;
   height: 2.1rem;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--plum);
+  background: var(--accent);
+  color: var(--on-vibrant);
   font-size: 1.2rem;
 }
 
@@ -302,11 +358,55 @@ ul {
 .site-nav a:not(.btn) {
   text-decoration: none;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .site-nav a:not(.btn):hover {
-  color: var(--terracotta);
+  color: var(--link);
+}
+
+/* ---------- Theme toggle ---------- */
+
+.theme-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--heading);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.has-js .theme-toggle {
+  display: inline-flex;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.theme-toggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+.theme-toggle[data-mode="dark"] .icon-moon {
+  display: none;
+}
+
+.theme-toggle[data-mode="dark"] .icon-sun {
+  display: block;
 }
 
 .nav-toggle {
@@ -319,7 +419,7 @@ ul {
   padding: 0.4rem 0.9rem;
   font: inherit;
   font-weight: 700;
-  color: var(--plum);
+  color: var(--heading);
   cursor: pointer;
 }
 
@@ -360,7 +460,7 @@ ul {
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--cream);
+    background: var(--bg-alt);
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow);
     padding: 1rem 1.25rem 1.5rem;
@@ -383,7 +483,7 @@ ul {
   }
 
   .site-nav a:not(.btn):hover {
-    background: var(--cream-deep);
+    background: var(--surface);
   }
 
   .site-nav .btn {
@@ -398,9 +498,9 @@ ul {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(60rem 30rem at 110% -10%, var(--gold-soft) 0%, transparent 60%),
-    radial-gradient(50rem 28rem at -20% 110%, var(--rust-soft) 0%, transparent 55%),
-    var(--cream);
+    radial-gradient(60rem 30rem at 110% -10%, rgba(0, 152, 206, 0.16) 0%, transparent 60%),
+    radial-gradient(50rem 28rem at -20% 110%, rgba(0, 200, 165, 0.14) 0%, transparent 55%),
+    var(--bg);
 }
 
 .hero-inner {
@@ -414,7 +514,7 @@ ul {
 .hero-sub {
   font-size: 1.2rem;
   max-width: 34em;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 .hero-actions {
@@ -430,19 +530,13 @@ ul {
   gap: 0.5rem 1.5rem;
   list-style: none;
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--text-muted);
   font-size: 0.95rem;
-}
-
-.hero-pdf-link {
-  margin-top: 0.9rem;
-  font-size: 0.95rem;
-  font-weight: 700;
 }
 
 .hero-ticks li::before {
   content: "✓";
-  color: var(--teal);
+  color: var(--check);
   font-weight: 900;
   margin-right: 0.45rem;
 }
@@ -455,7 +549,7 @@ ul {
 }
 
 .hero-card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -466,7 +560,7 @@ ul {
 .hero-card p {
   margin: 0.5rem 0 0;
   font-weight: 700;
-  color: var(--plum);
+  color: var(--heading);
 }
 
 .hero-card-1 {
@@ -484,7 +578,7 @@ ul {
 .float-note {
   position: absolute;
   font-size: 2.2rem;
-  color: var(--gold);
+  color: var(--accent);
   opacity: 0.9;
 }
 
@@ -498,16 +592,16 @@ ul {
   bottom: -0.25rem;
   left: -2%;
   font-size: 2.8rem;
-  color: var(--terracotta-bright);
-  opacity: 0.35;
+  color: var(--cat-inperson);
+  opacity: 0.5;
   transform: rotate(-10deg);
 }
 
 .float-note-3 {
   top: 42%;
   right: -1%;
-  color: var(--violet);
-  opacity: 0.4;
+  color: var(--primary);
+  opacity: 0.55;
 }
 
 @media (max-width: 860px) {
@@ -528,7 +622,7 @@ ul {
 }
 
 .section-alt {
-  background: var(--cream-deep);
+  background: var(--bg-alt);
 }
 
 .section-head {
@@ -538,13 +632,13 @@ ul {
 
 .section-lead {
   font-size: 1.15rem;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 .section-note {
   margin-top: 1.75rem;
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--text-muted);
   max-width: 44em;
 }
 
@@ -564,7 +658,7 @@ ul {
 }
 
 .card {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -578,8 +672,8 @@ ul {
   height: 3.1rem;
   border-radius: 12px;
   margin-bottom: 1rem;
-  background: var(--gold-soft);
-  color: var(--terracotta);
+  background: var(--accent);
+  color: var(--on-vibrant);
 }
 
 .card-icon svg {
@@ -588,18 +682,18 @@ ul {
 }
 
 .icon-see {
-  background: var(--teal-soft);
-  color: var(--teal);
+  background: var(--primary);
+  color: var(--on-vibrant);
 }
 
 .icon-hear {
-  background: var(--violet-soft);
-  color: var(--violet);
+  background: var(--cat-virtual);
+  color: var(--on-vibrant);
 }
 
 .icon-do {
-  background: var(--rust-soft);
-  color: var(--terracotta);
+  background: var(--cat-inperson);
+  color: var(--on-vibrant);
 }
 
 .format-card .badge {
@@ -631,7 +725,7 @@ ul {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--teal);
+  color: var(--check);
   font-weight: 900;
 }
 
@@ -646,7 +740,7 @@ ul {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--gold);
+  color: var(--primary);
   font-weight: 700;
 }
 
@@ -654,8 +748,8 @@ ul {
 
 .callout {
   margin-top: 2rem;
-  background: var(--white);
-  border: 2px dashed var(--gold);
+  background: var(--surface);
+  border: 2px dashed var(--primary);
   border-radius: var(--radius);
   padding: 1.3rem 1.6rem;
   font-size: 1.1rem;
@@ -673,8 +767,8 @@ ul {
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--violet);
-  background: var(--violet-soft);
+  color: var(--on-vibrant);
+  background: var(--cat-virtual);
   border-radius: 999px;
   padding: 0.25rem 0.8rem;
   margin: 0 0 0.9rem;
@@ -682,7 +776,7 @@ ul {
 
 .level-blurb {
   font-weight: 400;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 .level-card .dot-list {
@@ -691,7 +785,7 @@ ul {
 
 .level-times {
   font-size: 0.92rem;
-  color: var(--ink-soft);
+  color: var(--text-muted);
   border-top: 1px solid var(--border);
   padding-top: 0.9rem;
   margin-bottom: 0;
@@ -700,7 +794,7 @@ ul {
 /* ---------- Schedule ---------- */
 
 .schedule-wrap {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -720,8 +814,8 @@ ul {
 }
 
 .schedule thead th {
-  background: var(--plum);
-  color: var(--white);
+  background: var(--primary);
+  color: var(--on-vibrant);
   font-family: var(--font-body);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
@@ -729,7 +823,7 @@ ul {
 }
 
 .schedule tbody tr:nth-child(even) {
-  background: var(--cream);
+  background: var(--bg-alt);
 }
 
 .schedule tbody td a {
@@ -769,7 +863,7 @@ ul {
     font-weight: 800;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--ink-soft);
+    color: var(--text-muted);
   }
 }
 
@@ -778,9 +872,9 @@ ul {
 .pricing-card {
   max-width: 32rem;
   margin-inline: auto;
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
-  border-top: 6px solid var(--gold);
+  border-top: 6px solid var(--primary);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 2.2rem 2.2rem 2rem;
@@ -795,13 +889,13 @@ ul {
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 700;
-  color: var(--plum);
+  color: var(--heading);
 }
 
 .price-period {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 .pricing-card .check-list {
@@ -811,7 +905,7 @@ ul {
 
 .pricing-fine {
   font-size: 0.92rem;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 /* ---------- Teacher ---------- */
@@ -829,16 +923,16 @@ ul {
   place-content: center;
   gap: 0.5rem;
   text-align: center;
-  background: var(--cream-deep);
+  background: var(--bg-alt);
   border: 2px dashed var(--border);
   border-radius: var(--radius);
-  color: var(--ink-soft);
+  color: var(--text-muted);
   font-weight: 700;
 }
 
 .photo-placeholder span {
   font-size: 3rem;
-  color: var(--gold);
+  color: var(--primary);
 }
 
 .photo-placeholder p {
@@ -877,7 +971,7 @@ ul {
 }
 
 .faq-list details {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0;
@@ -888,7 +982,7 @@ ul {
   list-style: none;
   cursor: pointer;
   font-weight: 800;
-  color: var(--plum);
+  color: var(--heading);
   padding: 1.05rem 3rem 1.05rem 1.3rem;
   position: relative;
 }
@@ -905,7 +999,7 @@ ul {
   transform: translateY(-50%);
   font-size: 1.4rem;
   font-weight: 400;
-  color: var(--terracotta);
+  color: var(--primary);
   transition: transform 0.2s ease;
 }
 
@@ -916,22 +1010,23 @@ ul {
 .faq-list details p {
   padding: 0 1.3rem 1.2rem;
   margin: 0;
-  color: var(--ink-soft);
+  color: var(--text-muted);
 }
 
 /* ---------- Sign-up band ---------- */
 
 .signup-band {
   background:
-    radial-gradient(40rem 20rem at 15% 120%, rgba(232, 169, 60, 0.35) 0%, transparent 60%),
-    var(--plum);
-  color: var(--white);
+    radial-gradient(40rem 20rem at 15% 120%, rgba(0, 200, 165, 0.28) 0%, transparent 60%),
+    radial-gradient(38rem 20rem at 90% -20%, rgba(0, 152, 206, 0.22) 0%, transparent 60%),
+    var(--band-bg);
+  color: var(--band-text);
   padding-block: clamp(3.5rem, 7vw, 5.5rem);
   text-align: center;
 }
 
 .signup-band h2 {
-  color: var(--white);
+  color: var(--band-heading);
 }
 
 .signup-status {
@@ -951,14 +1046,15 @@ ul {
 }
 
 .signup-contact a {
-  color: var(--gold);
+  color: var(--band-link);
   font-weight: 800;
 }
 
 /* ---------- Footer ---------- */
 
 .site-footer {
-  background: #362646;
+  background: var(--band-bg);
+  border-top: 1px solid var(--border);
   color: rgba(255, 255, 255, 0.8);
   padding-block: 2.5rem;
   font-size: 0.95rem;
@@ -972,11 +1068,11 @@ ul {
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--band-heading);
 }
 
 .footer-brand span {
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .footer-fine {
@@ -985,7 +1081,7 @@ ul {
 }
 
 .site-footer a {
-  color: var(--gold);
+  color: var(--band-link);
 }
 
 /* ---------- Prose pages (privacy policy, etc.) ---------- */
@@ -1006,7 +1102,7 @@ ul {
 }
 
 .page-updated {
-  color: var(--ink-soft);
+  color: var(--text-muted);
   font-size: 0.95rem;
 }
 
