@@ -90,7 +90,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -332,14 +332,14 @@ hr {
    the dark theme — no background-knockout artifacts. */
 .brand-logo {
   display: block;
-  height: 3.25rem;
+  height: 4.5rem;
   width: auto;
   border-radius: 9px;
 }
 
 @media (max-width: 480px) {
   .brand-logo {
-    height: 2.6rem;
+    height: 3.1rem;
   }
 }
 
@@ -1061,7 +1061,7 @@ hr {
 
 .footer-logo {
   display: block;
-  height: 2.9rem;
+  height: 3.6rem;
   width: auto;
   border-radius: 9px;
   margin-bottom: 0.9rem;
