@@ -343,6 +343,31 @@ hr {
   }
 }
 
+/* Swap the header logo per theme: white-background version on the light
+   theme, transparent (knocked-out) version on the dark theme. The footer
+   always uses the transparent version because its band is dark in both. */
+.brand-logo--dark {
+  display: none;
+}
+
+:root[data-theme="dark"] .brand-logo--light {
+  display: none;
+}
+
+:root[data-theme="dark"] .brand-logo--dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .brand-logo--light {
+    display: none;
+  }
+
+  :root:not([data-theme]) .brand-logo--dark {
+    display: block;
+  }
+}
+
 .site-nav ul {
   display: flex;
   align-items: center;
