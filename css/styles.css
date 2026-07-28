@@ -332,14 +332,14 @@ hr {
    the dark theme — no background-knockout artifacts. */
 .brand-logo {
   display: block;
-  height: 2.5rem;
+  height: 3.25rem;
   width: auto;
   border-radius: 9px;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .brand-logo {
-    height: 2.1rem;
+    height: 2.6rem;
   }
 }
 
@@ -1061,7 +1061,7 @@ hr {
 
 .footer-logo {
   display: block;
-  height: 2.4rem;
+  height: 2.9rem;
   width: auto;
   border-radius: 9px;
   margin-bottom: 0.9rem;
