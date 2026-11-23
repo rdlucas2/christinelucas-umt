@@ -27,8 +27,8 @@ python3 -m http.server 8000
 
 ## Deploy to GitHub Pages
 
-Settings → Pages → Deploy from branch → `main` / root. The `.nojekyll` file is
-already in place.
+The live site deploys from the **`gh-pages`** branch (root). Branch off
+`gh-pages` and open PRs against it. The `.nojekyll` file is already in place.
 
 ## 🚀 Launch checklist (placeholders to fill in)
 
@@ -39,12 +39,10 @@ Search `index.html` for `TODO` to find each spot.
 - [x] **Contact email** — done (`contact@christinelucaspiano.com`).
 - [x] **Tuition** — done ($144/month or $36/hour).
 - [x] **Instructor bio + photo** — done.
-- [ ] **GA4 Measurement ID** — paste into `window.GA_MEASUREMENT_ID` in
-      `index.html`, then mark `sign_up_click` and `email_click` as key events.
-      Full steps: `docs/google-setup.md`.
-- [ ] **Google Ads IDs** — paste the `AW-…` tag ID into `window.GOOGLE_ADS_ID`
-      in `index.html` and the `AW-…/label` into `GOOGLE_ADS_SEND_TO` in
-      `js/main.js`. Do not launch campaigns before the sign-up form is live.
+- [x] **GA4** — Google tag `GTM-NVTP6T6K` → `G-VBDJYG2BSY`; `sign_up_click`
+      and `email_click` are key events. Details: `docs/google-setup.md`.
+- [ ] **Google Ads** — add Ads as a destination of the existing Google tag and
+      paste the `AW-…/label` into `GOOGLE_ADS_SEND_TO` in `js/main.js`.
 - [ ] **Workbook purchase links** — replace the generic UMT shop link in the
       `#materials` section with per-level links if desired.
 - [ ] **Schedule details** — confirm the AM/PM assumptions (site currently

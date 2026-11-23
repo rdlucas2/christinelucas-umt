@@ -16,8 +16,8 @@ const CONTACT_EMAIL = "contact@christinelucaspiano.com?Subject=UMT%20Club%20Requ
 
 // 3. Google Ads conversion for sign-up clicks. Paste the value from
 //    the conversion action's "send_to" (looks like "AW-123456789/AbC-DEfGhIJk").
-//    Requires window.GOOGLE_ADS_ID to be set in index.html too.
-//    See docs/google-setup.md.
+//    The Ads account must also be added as a destination of the site's
+//    Google tag (GTM-NVTP6T6K). See docs/google-setup.md.
 const GOOGLE_ADS_SEND_TO = "";
 // ============================================================
 
@@ -55,9 +55,8 @@ document.querySelectorAll("[data-email-link]").forEach((link) => {
 });
 
 // --- Analytics ----------------------------------------------
-// Events flow to GA4 through the Google tag configured in index.html.
-// gtag is always defined there, and calls are harmless no-ops until a
-// real Measurement ID is pasted in — so this code is safe to ship early.
+// Events flow to GA4 (G-VBDJYG2BSY) through the Google tag GTM-NVTP6T6K
+// loaded at the top of index.html, which defines window.gtag.
 function track(eventName, params) {
   if (typeof window.gtag === "function") {
     window.gtag("event", eventName, params || {});
