@@ -66,32 +66,8 @@
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://theorymadefun.com/assets/tmf-logo.png">
 
-  <!-- Google tag (gtag.js) for Google Analytics 4 + Google Ads.
-       Setup steps: see docs/google-setup.md. Nothing loads until the IDs below
-       are filled in, so this is safe to ship as-is. -->
-  <script>
-    // TODO: paste the GA4 Measurement ID from Admin → Data streams (looks like "G-ABC123XYZ")
-    window.GA_MEASUREMENT_ID = "";
-    // TODO (later): paste the Google Ads tag ID (looks like "AW-123456789") once the
-    // conversion action exists — see docs/google-setup.md step 2 of the Ads section.
-    window.GOOGLE_ADS_ID = "";
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    if (window.GA_MEASUREMENT_ID) {
-      var gtagScript = document.createElement("script");
-      gtagScript.async = true;
-      gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_MEASUREMENT_ID;
-      document.head.appendChild(gtagScript);
-      gtag("js", new Date());
-      gtag("config", window.GA_MEASUREMENT_ID);
-      if (window.GOOGLE_ADS_ID) {
-        gtag("config", window.GOOGLE_ADS_ID);
-      }
-    }
-  </script>
   <script type="application/ld+json">
-{
+  {
     "@context": "https://schema.org",
     "@type": "MusicSchool",
     "name": "Theory Made Fun",
@@ -748,9 +724,9 @@
             <span class="btn btn-light is-disabled" data-signup-soon>Sign-up form coming soon</span>
           </div>
           <p class="signup-contact">
-            Questions, or want to be notified when registration opens?
-            Email <a data-email-link
-              href="mailto:theorymadefun@gmail.com?Subject=UMT%20Club%20Request">theorymadefun@gmail.com</a>
+            Questions? <a data-email-link
+              href="mailto:contact@christinelucaspiano.com?Subject=UMT%20Club%20Request">Email me here</a>
+            — I'd love to hear from you.
           </p>
         </div>
       </div>
