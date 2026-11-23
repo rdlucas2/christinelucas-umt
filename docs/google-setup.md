@@ -1,15 +1,15 @@
 # Google Analytics 4 + Google Ads setup runbook
 
-The site code is already wired for both — this doc is the account-side work.
-There are exactly **three values to paste into the code** when you get them:
+The site loads one Google tag, `GTM-NVTP6T6K`, at the top of every page. That
+tag sends to the GA4 property `G-VBDJYG2BSY`, and Google Ads will be added to it
+as a second destination. Do **not** add a separate `gtag/js?id=G-…` snippet —
+that would double-count every page view.
+
+Only **one value** still goes into the code, once the Ads conversion exists:
 
 | Value | Looks like | Where it goes |
 |---|---|---|
-| GA4 Measurement ID | `G-ABC123XYZ` | `window.GA_MEASUREMENT_ID` in `index.html` `<head>` |
-| Google Ads tag ID | `AW-123456789` | `window.GOOGLE_ADS_ID` in `index.html` `<head>` |
 | Ads conversion send_to | `AW-123456789/AbC-DEfGhIJk` | `GOOGLE_ADS_SEND_TO` in `js/main.js` |
-
-Nothing loads or breaks while these are empty, so partial setup is safe.
 
 ## What the site sends
 
@@ -34,10 +34,9 @@ means key events imported into Google Ads.
 2. Add a **Web** data stream with URL `https://theorymadefun.com` (or
    `https://rdlucas2.github.io` until the domain cutover — the stream URL is
    informational and easy to update later). Leave **Enhanced measurement** on.
-3. Copy the **Measurement ID** (`G-…`) shown on the stream page and paste it into
-   `window.GA_MEASUREMENT_ID` in `index.html`. Deploy.
-4. Admin → Data display → **Key events** → *New key event* → create two, by exact
-   name: `sign_up_click` and `email_click`.
+3. ✅ Done: the stream's Google tag (`GTM-NVTP6T6K`) is installed on every page.
+4. ✅ Done: Admin → Events → **Create event** → *Create with code*, marked as key
+   events: `sign_up_click` and `email_click`.
 5. Verify: open the live site, click around, then check **Reports → Realtime**.
    For event-level detail, install the
    [Tag Assistant](https://tagassistant.google.com/) and use **Admin → DebugView**.
@@ -59,10 +58,9 @@ your budget buys nothing.
    then choose **Add a conversion action manually**:
    - Category: *Submit lead form*. Name: `Sign-up click`. Value: none (or a
      nominal value). Count: **One** per click.
-4. When asked how to install the tag, choose **Use the Google tag** /
-   "install manually". You'll be shown a tag ID (`AW-…`) and an event snippet
-   containing `send_to: 'AW-…/…'`:
-   - Paste the `AW-…` ID into `window.GOOGLE_ADS_ID` in `index.html`.
+4. When asked how to install the tag, choose to use the **existing Google tag**
+   on the site (`GTM-NVTP6T6K`) so Ads becomes a destination of that tag — no
+   new snippet on the page. Copy the event snippet's `send_to: 'AW-…/…'` value:
    - Paste the full `AW-…/label` value into `GOOGLE_ADS_SEND_TO` in `js/main.js`.
    - Deploy. (The site already fires the conversion event on sign-up clicks.)
 5. Link accounts: Google Ads → Tools → Data manager → connect **Google
